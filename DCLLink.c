@@ -1,5 +1,5 @@
 /**
-  * @file name:DCLLink
+  * @file name:DCLLink.c
   * @brief    :Realization of basic functions of bidirectional circular linked list
   * @author   :i33akq@163.com
   * @date     :2025/04/13
@@ -52,10 +52,9 @@ void DCLLink_Traverse(DCLLink_t *Head){
 }
 
 bool DCLLink_HeadInsert(DCLLink_t *Head , ELemtype_t data){
-    DCLLink_t *New=(DCLLink_t *)calloc(1,sizeof(DCLLink_t));
+    DCLLink_t *New=DCLLink_NewNode(data);
     if(!New)  return false;
-    New->data=data;
-
+  
     if(Head->next==NULL){ //判空
         Head->next=New;
         New->next=New;
@@ -72,9 +71,8 @@ bool DCLLink_HeadInsert(DCLLink_t *Head , ELemtype_t data){
 }
 
 bool DCLLink_TailInsert(DCLLink_t *Head , ELemtype_t data){
-    DCLLink_t *New=(DCLLink_t *)calloc(1,sizeof(DCLLink_t));
+    DCLLink_t *New=DCLLink_NewNode(data);
     if(!New)  return false;
-    New->data=data;
 
     if(Head->next==NULL){  //判空
         Head->next=New;
@@ -127,9 +125,8 @@ bool DCLLink_TailDelete(DCLLink_t *Head){
 bool DCLLink_Insert_Place(DCLLink_t *Head,ELemtype_t data,ELemtype_t dest){
     if((DCLLink_Length(Head))<dest || !Head)  return false;
 
-    DCLLink_t *New=(DCLLink_t *)calloc(1,sizeof(DCLLink_t));
+    DCLLink_t *New=DCLLink_NewNode(data);
     if(!New)  return false;
-    New->data=data;
 
     DCLLink_t *current=Head->next;
     DCLLink_t *previous=Head;
@@ -154,9 +151,8 @@ bool DCLLink_Insert_Place(DCLLink_t *Head,ELemtype_t data,ELemtype_t dest){
 bool DCLLink_Insert_BeforeValue(DCLLink_t *Head,ELemtype_t data,ELemtype_t dest){
     if(!Head || Head->next==NULL) return false;
 
-    DCLLink_t *New=(DCLLink_t *)calloc(1,sizeof(DCLLink_t));
+    DCLLink_t *New=DCLLink_NewNode(data);
     if(!New)  return false;
-    New->data=data;
 
     DCLLink_t *current=Head->next;
     DCLLink_t *previous=Head;
@@ -181,9 +177,8 @@ bool DCLLink_Insert_BeforeValue(DCLLink_t *Head,ELemtype_t data,ELemtype_t dest)
 bool DCLLink_Insert_AfterValue(DCLLink_t *Head,ELemtype_t data,ELemtype_t dest){
     if(!Head || Head->next==NULL) return false;
 
-    DCLLink_t *New=(DCLLink_t *)calloc(1,sizeof(DCLLink_t));
+    DCLLink_t *New=DCLLink_NewNode(data);
     if(!New)  return false;
-    New->data=data;
 
     DCLLink_t *latter=Head->next;
     DCLLink_t *current=Head;

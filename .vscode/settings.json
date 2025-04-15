@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "dcllink.h": "c",
+        "stdio.h": "c"
+    }
+}
